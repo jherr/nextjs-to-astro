@@ -1,0 +1,41 @@
+---
+import Layout from "../../components/Layout.astro";
+
+const res = await fetch('http://localhost:8080/pokemon.json');
+const allPokemon = await res.json();
+
+const pokemon = allPokemon.find((p) => p.id === +Astro.params.id);
+---
+
+<Layout name={pokemon.name}>
+  <div class="flex gap-2">
+    <div class="max-w-md">
+      <img
+        src={`http://localhost:8080/pokemon/${pokemon.name.toLowerCase()}.jpg`}
+        alt={pokemon.name}
+        class="w-full"
+      />
+    </div>
+    <div>
+      <h1 class="font-bold text-5xl mb-2">{pokemon.name}</h1>
+      <div class="italic text-xl">{pokemon.type.join(", ")}</div>
+      <div
+        class="grid"
+        style="grid-template-columns: 1fr 1fr;"
+      >
+        <div class="font-bold mr-4">HP</div>
+        <div>{pokemon.hp}</div>
+        <div class="font-bold mr-4">Speed</div>
+        <div>{pokemon.speed}</div>
+        <div class="font-bold mr-4">Attack</div>
+        <div>{pokemon.attack}</div>
+        <div class="font-bold mr-4">Special Attack</div>
+        <div>{pokemon.special_attack}</div>
+        <div class="font-bold mr-4">Defense</div>
+        <div>{pokemon.defense}</div>
+        <div class="font-bold mr-4">Special Defense</div>
+        <div>{pokemon.special_defense}</div>
+      </div>
+    </div>
+  </div>
+</Layout>

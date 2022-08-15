@@ -1,0 +1,13 @@
+<body>
+  <div class="mx-auto max-w-7xl">
+    <header class="p-5 mb-2 bg-blue-700 text-white text-3xl font-bold flex">
+      <a href="/" class="flex-grow">
+        Pokemon{Astro.props.name ? ` - ${Astro.props.name}` : ''}
+      </a>
+    </header>
+    <div>
+      <slot />
+    </div>
+  </div>
+</body>
+

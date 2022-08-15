@@ -1,0 +1,15 @@
+---
+import pokemon from "../components/pokemon.json";
+
+import PokemonList from "../components/PokemonList";
+import Login from "../components/Login";
+---
+
+<html lang="en">
+	<body>
+		<main>
+			<Login client:visible />
+			<PokemonList pokemon={pokemon} />
+		</main>
+	</body>
+</html>
